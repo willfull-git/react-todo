@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classes from '../../../App.module.css';
 
-const Item = (props)=>{
-    return (
-        <div className={classes.item}>
-            <div className={classes.itemName}>
-                <h3>Task: {props.data.id}</h3>
-            </div>
-        </div>
-    );
+class Item extends Component {
+  render(){ return (
+    <div className={classes.item}>
+      <div className={classes.itemName}>
+        <h3>Task: {this.props.data.id}</h3>
+      </div>
+    </div>
+  )}
 }
 
 Item.propTypes = {

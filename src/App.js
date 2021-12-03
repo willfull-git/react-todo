@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {Component} from 'react';
 import classes from './App.module.css';
 
 import List from './components/list/List';
@@ -14,61 +14,67 @@ const dataItems = [
   { id: 5, name: '' },
 ];
 
-// |--- UTILS
-const addItem = (items) => {
-  const editedItems = [...items];
-
-  editedItems.push({
-    id: editedItems.length,
-    name: ''
-  });
-
-  return editedItems;
-}
-
-const removeItem = (items) => {
-  const editedItems = [...items];
-
-  editedItems.pop();
-
-  return editedItems;
-}
-
 // |--- COMPONENT
-function App() {
-  const [items, setItems] = useState(dataItems); 
-
-  const handleAddItem = () => {
-    setItems( addItem(items) );
+class App extends Component {
+  constructor(){
+    super();
+    this.state            = {items: dataItems};
+    this.handleAddItem    = this.handleAddItem.bind(this);
+    this.handleRemoveItem = this.handleRemoveItem.bind(this);
   }
 
-  const handleRemoveItem = () => {
-    setItems( removeItem(items) );
+  // |--- UTILS
+  addItem(items){
+    const editedItems = [...items];
+
+    editedItems.push({
+      id: editedItems.length,
+      name: ''
+    });
+
+    return editedItems;
   }
 
-  return (
+  removeItem(items){
+    const editedItems = [...items];
+
+    editedItems.pop();
+
+    return editedItems;
+  }
+
+  // |--- Handlers
+  handleAddItem(){
+    this.setState( {...this.state, items: this.addItem(this.state.items)} );
+  }
+
+  handleRemoveItem(){
+    this.setState( {...this.state, items: this.removeItem(this.state.items)} );
+  }
+
+  render(){ return (
     <div className={classes.container}>
       <List>
-        { items.map((item)=> <Item key={item.id} data={item}></Item> ) }
+        { this.state.items.map((item)=> <Item key={item.id} data={item}></Item> ) }
       </List>
       <Controls>
         <button
           className={classes.button}
           type="button"
-          onClick={ handleAddItem }
+          onClick={ this.handleAddItem }
         >
           Add
         </button>
         <button
           className={classes.button}
           type="button"
-          onClick={ handleRemoveItem }
+          onClick={ this.handleRemoveItem }
         >
           Remove
         </button>
       </Controls>
     </div>
-  );
+  )}
 }
 
 export default App;

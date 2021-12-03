@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from '../../App.module.css';
 
-const Controls = (props)=>{
-  return (
+class Controls extends Component {
+  render(){ return (
     <div className={classes.todoControls}>
-      {props.children}
+      {this.props.children}
     </div>
-  );
+  )}
 }
 
 export default Controls;

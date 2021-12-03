@@ -1,11 +1,12 @@
+import React, {Component} from 'react';
 import classes from '../../App.module.css';
 
-const List = (props)=>{
-    return (
-        <div className={classes.list}>
-            { props.children }
-        </div>
-    );
+class List extends Component {
+  render(){ return (
+    <div className={classes.list}>
+      { this.props.children }
+    </div>
+  )}
 }
 
 export default List;
