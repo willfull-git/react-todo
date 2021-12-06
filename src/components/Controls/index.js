@@ -1,10 +1,12 @@
 import React from 'react';
 import classes from '../../App.module.css';
 
-const Controls = (props)=>{
+const Controls = ({controls})=>{
   return (
     <div className={classes.todoControls}>
-      {props.children}
+      { controls.map(({name, className, handler}) =>
+          <button className={className} onClick={handler}>{name}</button>
+      )}
     </div>
   );
 }

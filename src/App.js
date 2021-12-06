@@ -1,72 +1,41 @@
 import {useState} from 'react';
 import classes from './App.module.css';
+import dataTodo from './constants/dataTodo';
 
-import List from './components/list/List';
-import Item from './components/list/item/Item';
-import Controls from './components/controls/Controls';
-
-// |--- DATA
-const dataItems = [
-  { id: 1, name: '' },
-  { id: 2, name: '' },
-  { id: 3, name: '' },
-  { id: 4, name: '' },
-  { id: 5, name: '' },
-];
-
-// |--- UTILS
-const addItem = (items) => {
-  const editedItems = [...items];
-
-  editedItems.push({
-    id: editedItems.length,
-    name: ''
-  });
-
-  return editedItems;
-}
-
-const removeItem = (items) => {
-  const editedItems = [...items];
-
-  editedItems.pop();
-
-  return editedItems;
-}
+import List from './components/TodoList';
+import Controls from './components/Controls';
 
 // |--- COMPONENT
 function App() {
-  const [items, setItems] = useState(dataItems); 
+  const [todos, setTodos] = useState(dataTodo); 
+  const controls = [
+    { name: 'add item', className: classes.button, handler: handleAddTodo },
+    { name: 'remove item', className: classes.button, handler: handleRemoveTodo }
+  ];
 
-  const handleAddItem = () => {
-    setItems( addItem(items) );
+  function handleAddTodo() {
+    const updatedTodos = [...todos];
+
+    updatedTodos.push({
+      id: updatedTodos.length,
+      name: ''
+    });
+
+    setTodos( updatedTodos );
   }
 
-  const handleRemoveItem = () => {
-    setItems( removeItem(items) );
+  function handleRemoveTodo() {
+    const updatedTodos = [...todos];
+
+    updatedTodos.pop();
+
+    setTodos( updatedTodos );
   }
 
   return (
     <div className={classes.container}>
-      <List>
-        { items.map((item)=> <Item key={item.id} data={item}></Item> ) }
-      </List>
-      <Controls>
-        <button
-          className={classes.button}
-          type="button"
-          onClick={ handleAddItem }
-        >
-          Add
-        </button>
-        <button
-          className={classes.button}
-          type="button"
-          onClick={ handleRemoveItem }
-        >
-          Remove
-        </button>
-      </Controls>
+      <List todos={todos}/>
+      <Controls controls={controls}/>
     </div>
   );
 }

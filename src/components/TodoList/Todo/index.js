@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from '../../../App.module.css';
 
-const Item = (props)=>{
+const Todo = ({todo})=>{
     return (
         <div className={classes.item}>
             <div className={classes.itemName}>
-                <h3>Task: {props.data.id}</h3>
+                <h3>Task: {todo.name}</h3>
             </div>
         </div>
     );
 }
 
-Item.propTypes = {
+Todo.propTypes = {
     data: PropTypes.object
 }
 
-export default Item;
+export default Todo;
