@@ -19,30 +19,14 @@ class App extends Component {
     };
   }
 
-  // |--- Handlers
-  handleAddTodo = () => {
-    const updatedTodos = [...this.state.todos];
-
-    updatedTodos.push({
-      id: updatedTodos.length+1,
-      name: ''
-    });
-
-    this.setState({todos: updatedTodos});
-  }
-
-  handleRemoveTodo = () => {
-    const updatedTodos = [...this.state.todos];
-
-    updatedTodos.pop();
-
-    this.setState({todos: updatedTodos});
+  setTodos = (todos) => {
+    this.setState({todos})
   }
 
   render(){ return (
     <div className={classes.container}>
       <TodoList todos={this.state.todos}/>
-      <Controls controls={this.state.controls}/>
+      <Controls todos={this.state.todos} setTodos={this.setTodos}/>
     </div>
   )}
 }
