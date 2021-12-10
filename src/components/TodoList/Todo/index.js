@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classes from '../../../App.module.css';
+import classes from './styles.module.css';
 
 const Todo = ({todo})=>{
     return (

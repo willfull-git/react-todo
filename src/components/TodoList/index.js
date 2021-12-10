@@ -1,4 +1,4 @@
-import classes from '../../App.module.css';
+import classes from './styles.module.css';
 
 import Todo from './Todo';
 

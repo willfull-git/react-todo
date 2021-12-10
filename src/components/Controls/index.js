@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classes from '../../App.module.css';
+import classes from './styles.module.css';
 
 const Controls = ({todos, setTodos}) => {
   const [name, setName] = useState('');
