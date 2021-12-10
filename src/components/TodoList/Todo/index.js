@@ -13,7 +13,9 @@ const Todo = ({todo})=>{
 }
 
 Todo.propTypes = {
-    data: PropTypes.object
+  todo: PropTypes.shape({
+    name: PropTypes.string,
+  })
 }
 
 export default Todo;
