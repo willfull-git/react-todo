@@ -8,7 +8,7 @@
     flex-wrap: wrap;
 }
 
-.item {
+.todo {
     width: calc(25% - 10px);
     margin: 5px;
     padding-bottom: 25%;
@@ -17,7 +17,8 @@
     box-sizing: border-box;
 }
 
-.itemName {
+.todoName {
+    padding: 15px;
     position: absolute;
     top: 0;
     left: 0;
@@ -26,6 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .controls {
@@ -37,4 +39,19 @@
     border: none;
     background-color: SteelBlue;
     cursor: pointer;
+}
+
+.input {
+    padding: 5px;
+    margin: 5px;
+    border: 0;
+    border-bottom: 1px solid SteelBlue;
+    outline: none;
+}
+
+.validationMessage {
+    margin: 5px;
+    color: red;
+    font-size: 10px;
+    font-weight: lighter;
 }

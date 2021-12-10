@@ -4,8 +4,8 @@ import classes from '../../../App.module.css';
 
 const Todo = ({todo})=>{
     return (
-        <div className={classes.item}>
-            <div className={classes.itemName}>
+        <div className={classes.todo}>
+            <div className={classes.todoName}>
                 <h3>Task: {todo.name}</h3>
             </div>
         </div>
