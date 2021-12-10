@@ -47,6 +47,7 @@ const Controls = ({todos, setTodos}) => {
     updatedTodos.pop();
 
     setTodos( updatedTodos );
+    setNameValidationError('');
   }
 
   // |--- Render
